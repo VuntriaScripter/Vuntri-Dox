@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vuntria Information</title>
+
+<style>
+
+:root {
+    --bg: #090a0f;
+    --panel: #111219;
+    --panel2: #15161e;
+    --line: #282a35;
+    --text: #f2f2f7;
+    --muted: #858794;
+    --accent: #6758f5;
+    --accent2: #796aff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Inter, Segoe UI, Arial, sans-serif;
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 15% 0%,
+            rgba(103,88,245,.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 100%,
+            rgba(103,88,245,.07),
+            transparent 28%
+        ),
+        var(--bg);
+}
+
+.container {
+    width: min(1180px, calc(100% - 32px));
+    margin: 28px auto 40px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 18px 4px;
+}
+
+.logo {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 11px;
+
+    display: grid;
+    place-items: center;
+
+    background: linear-gradient(
+        145deg,
+        #7768ff,
+        #5144d8
+    );
+
+    box-shadow:
+        0 10px 30px rgba(103,88,245,.25);
+
+    font-weight: 800;
+}
+
+.brand h1 {
+    font-size: 20px;
+    margin: 0;
+    letter-spacing: .2px;
+}
+
+.brand span {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.card {
+    border: 1px solid var(--line);
+    border-radius: 17px;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(23,24,32,.96),
+            rgba(12,13,18,.96)
+        );
+
+    box-shadow:
+        0 24px 70px rgba(0,0,0,.35);
+}
+
+.header {
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid #22242e;
+}
+
+.header h2 {
+    margin: 0 0 5px;
+    font-size: 16px;
+}
+
+.header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    border-bottom: 1px solid #22242e;
+}
+
+.section:last-of-type {
+    border-bottom: 0;
+}
+
+.section-head {
+    height: 42px;
+
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #e9e9ef;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.ico {
+    width: 15px;
+    text-align: center;
+    color: #8d82ff;
+}
+
+.chev {
+    margin-left: auto;
+    color: #777986;
+    font-size: 12px;
+}
+
+/* =========================
+   FIELDS
+========================= */
+
+.fields {
+    padding: 0 16px 16px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+.field label {
+    display: block;
+
+    font-size: 9px;
+    color: #7d7f8c;
+
+    margin: 0 0 6px;
+}
+
+input,
+select {
+    width: 100%;
+    height: 35px;
+
+    border: 1px solid #171820;
+    border-radius: 7px;
+
+    outline: 0;
+
+    background: #050609;
+    color: #dedee5;
+
+    padding: 0 10px;
+
+    font-size: 11px;
+
+    transition:
+        .18s border-color,
+        .18s box-shadow;
+}
+
+input:focus,
+select:focus {
+
+    border-color: #5147b9;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(103,88,245,.11);
+}
+
+select {
+    appearance: auto;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+
+    display: none;
+
+    margin: 14px 16px 0;
+
+    padding: 11px 13px;
+
+    border-radius: 9px;
+
+    border: 1px solid #302c67;
+
+    background:
+        rgba(103,88,245,.08);
+
+    color: #bcb6ff;
+
+    font-size: 11px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.actions {
+
+    padding: 14px 16px;
+
+    display: flex;
+
+    gap: 9px;
+
+    border-top:
+        1px solid #242631;
+
+    background:
+        rgba(8,9,13,.55);
+}
+
+button {
+
+    height: 35px;
+
+    border-radius: 18px;
+
+    padding: 0 19px;
+
+    border:
+        1px solid #474954;
+
+    color: #eee;
+
+    background: transparent;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+button.primary {
+
+    border-color: transparent;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6c5cf8,
+            #5c4ee7
+        );
+
+    box-shadow:
+        0 8px 24px
+        rgba(103,88,245,.25);
+}
+
+button:hover {
+    filter: brightness(1.1);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+
+    text-align: center;
+
+    color: #5f616d;
+
+    font-size: 10px;
+
+    margin-top: 14px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 800px) {
+
+    .fields {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 480px) {
+
+    .container {
+        width:
+            min(
+                100% - 18px,
+                1180px
+            );
+
+        margin-top: 12px;
+    }
+
+    .fields {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <!-- LOGO / NOM -->
+
+    <div class="brand">
+
+        <div class="logo">
+            V
+        </div>
+
+        <div>
+
+            <h1>
+                Vuntria Information
+            </h1>
+
+            <span>
+                Interface de recherche
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- CARTE PRINCIPALE -->
+
+    <main class="card">
+
+        <div class="header">
+
+            <h2>
+                Critères de recherche
+            </h2>
+
+            <p>
+                Remplissez un ou plusieurs champs,
+                puis lancez la recherche.
+            </p>
+
+        </div>
+
+
+        <form id="searchForm">
+
+
+            <!-- ======================
+                 IDENTITÉ
+            ======================= -->
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <span class="ico">
+                        ♙
+                    </span>
+
+                    Identité
+
+                    <span class="chev">
+                        ⌃
+                    </span>
+
+                </div>
+
+
+                <div class="fields">
+
+                    <div class="field">
+
+                        <label>
+                            Nom
+                        </label>
+
+                        <input
+                            placeholder="Dupont"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Prénom
+                        </label>
+
+                        <input
+                            placeholder="Jean"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Nom de naissance
+                        </label>
+
+                        <input
+                            placeholder="Martin"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Nom affiché
+                        </label>
+
+                        <input
+                            placeholder="Jean Dupont"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================
+                 NAISSANCE
+            ======================= -->
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <span class="ico">
+                        ▣
+                    </span>
+
+                    Naissance
+
+                    <span class="chev">
+                        ⌃
+                    </span>
+
+                </div>
+
+
+                <div class="fields">
+
+                    <div class="field">
+
+                        <label>
+                            Jour
+                        </label>
+
+                        <select>
+
+                            <option>
+                                Jour
+                            </option>
+
+                            <option>
+                                1
+                            </option>
+
+                            <option>
+                                2
+                            </option>
+
+                            <option>
+                                3
+                            </option>
+
+                            <option>
+                                4
+                            </option>
+
+                            <option>
+                                5
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Mois
+                        </label>
+
+                        <select>
+
+                            <option>
+                                Mois
+                            </option>
+
+                            <option>
+                                Janvier
+                            </option>
+
+                            <option>
+                                Février
+                            </option>
+
+                            <option>
+                                Mars
+                            </option>
+
+                            <option>
+                                Avril
+                            </option>
+
+                            <option>
+                                Mai
+                            </option>
+
+                            <option>
+                                Juin
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Année
+                        </label>
+
+                        <input
+                            placeholder="1990"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Date exacte
+                        </label>
+
+                        <input
+                            placeholder="1990-06-15"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Ville de naissance
+                        </label>
+
+                        <input
+                            placeholder="Paris"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Genre
+                        </label>
+
+                        <select>
+
+                            <option>
+                                Tous
+                            </option>
+
+                            <option>
+                                Femme
+                            </option>
+
+                            <option>
+                                Homme
+                            </option>
+
+                            <option>
+                                Autre
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================
+                 CONTACT
+            ======================= -->
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <span class="ico">
+                        ✉
+                    </span>
+
+                    Contact
+
+                    <span class="chev">
+                        ⌃
+                    </span>
+
+                </div>
+
+
+                <div class="fields">
+
+                    <div class="field">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            placeholder="jean@example.com"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Téléphone
+                        </label>
+
+                        <input
+                            placeholder="0612345678"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Nom d'utilisateur
+                        </label>
+
+                        <input
+                            placeholder="jean_d"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Adresse IP
+                        </label>
+
+                        <input
+                            placeholder="192.168.1.1"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================
+                 LOCALISATION
+            ======================= -->
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <span class="ico">
+                        ⌖
+                    </span>
+
+                    Localisation
+
+                    <span class="chev">
+                        ⌃
+                    </span>
+
+                </div>
+
+
+                <div class="fields">
+
+                    <div class="field">
+
+                        <label>
+                            Adresse
+                        </label>
+
+                        <input
+                            placeholder="10 rue de la Paix"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Code postal
+                        </label>
+
+                        <input
+                            placeholder="75001"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Ville
+                        </label>
+
+                        <input
+                            placeholder="Paris"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================
+                 FIVEM
+            ======================= -->
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <span class="ico">
+                        ⌘
+                    </span>
+
+                    FiveM / GTA RP
+
+                    <span class="chev">
+                        ⌃
+                    </span>
+
+                </div>
+
+
+                <div class="fields">
+
+                    <div class="field">
+
+                        <label>
+                            Steam ID
+                        </label>
+
+                        <input
+                            placeholder="steam:110000123456789"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            FiveM License
+                        </label>
+
+                        <input
+                            placeholder="license:abc123..."
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Discord ID
+                        </label>
+
+                        <input
+                            placeholder="834855528869265459"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Xbox Live (XBL)
+                        </label>
+
+                        <input
+                            placeholder="xbl:2535423154..."
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Live ID
+                        </label>
+
+                        <input
+                            placeholder="live:84442586261"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            FiveM License2
+                        </label>
+
+                        <input
+                            placeholder="license2:def456..."
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================
+                 CHAMPS AVANCÉS
+            ======================= -->
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <span class="ico">
+                        ＋
+                    </span>
+
+                    Champs avancés
+
+                    <span class="chev">
+                        ⌃
+                    </span>
+
+                </div>
+
+
+                <div class="fields">
+
+                    <div class="field">
+
+                        <label>
+                            NIP (Sécu)
+                        </label>
+
+                        <input
+                            placeholder="1234567890123"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            IBAN
+                        </label>
+
+                        <input
+                            placeholder="FR76..."
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            BIC
+                        </label>
+
+                        <input
+                            placeholder="BNPAFRPP"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            VIN / Plaque
+                        </label>
+
+                        <input
+                            placeholder="AB-123-CD"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="status"
+                class="status"
+            ></div>
+
+
+            <!-- BOUTONS -->
+
+            <div class="actions">
+
+                <button
+                    class="primary"
+                    type="submit"
+                >
+                    → &nbsp; Rechercher
+                </button>
+
+
+                <button
+                    type="button"
+                    id="clear"
+                >
+                    ◇ &nbsp; Effacer
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+
+    <div class="footer">
+
+        Vuntria Information · Interface de démonstration
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   RECHERCHE
+========================= */
+
+const form =
+    document.getElementById(
+        "searchForm"
+    );
+
+const status =
+    document.getElementById(
+        "status"
+    );
+
+
+form.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const values =
+            [
+                ...form.querySelectorAll(
+                    "input"
+                )
+            ]
+
+            .map(
+                input =>
+                    input.value.trim()
+            )
+
+            .filter(
+                value =>
+                    value.length > 0
+            );
+
+
+        status.style.display =
+            "block";
+
+
+        if (values.length) {
+
+            status.textContent =
+                "Recherche de démonstration lancée avec "
+                + values.length
+                + " critère(s). Aucun service de données réel n'est connecté.";
+
+        }
+
+        else {
+
+            status.textContent =
+                "Ajoutez au moins un critère pour lancer la recherche de démonstration.";
+
+        }
+
+    }
+);
+
+
+/* =========================
+   EFFACER
+========================= */
+
+document
+    .getElementById("clear")
+    .addEventListener(
+        "click",
+        function() {
+
+            form.reset();
+
+            status.style.display =
+                "none";
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
