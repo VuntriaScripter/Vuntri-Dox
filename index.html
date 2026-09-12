@@ -1097,6 +1097,229 @@ form.addEventListener(
     }
 );
 
+    <script>
+
+const form = document.getElementById("searchForm");
+const status = document.getElementById("status");
+
+/*
+    BASE DE DONNÉES DE TEST
+    Tu peux ajouter autant de personnes fictives que tu veux.
+*/
+
+const personnes = [
+    {
+        nom: "Dupont",
+        prenom: "Jean",
+        naissance: "15/06/1990",
+        ville: "Paris",
+        email: "jean@example.com",
+        telephone: "0600000000",
+        discord: "123456789",
+        steam: "steam:test123"
+    },
+
+    {
+        nom: "Martin",
+        prenom: "Lucas",
+        naissance: "22/03/1995",
+        ville: "Lille",
+        email: "lucas@example.com",
+        telephone: "0611111111",
+        discord: "987654321",
+        steam: "steam:test456"
+    },
+
+    {
+        nom: "Durand",
+        prenom: "Thomas",
+        naissance: "10/11/1988",
+        ville: "Paris",
+        email: "thomas@example.com",
+        telephone: "0622222222",
+        discord: "555555555",
+        steam: "steam:test789"
+    }
+];
+
+
+/*
+    RECHERCHE
+*/
+
+form.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const inputs = form.querySelectorAll("input");
+
+    const nom = inputs[0].value.trim().toLowerCase();
+    const prenom = inputs[1].value.trim().toLowerCase();
+
+    if (!nom && !prenom) {
+
+        afficherMessage(
+            "Écris au moins un nom ou un prénom."
+        );
+
+        return;
+    }
+
+
+    const resultats = personnes.filter(personne => {
+
+        const correspondNom =
+            !nom ||
+            personne.nom.toLowerCase().includes(nom);
+
+        const correspondPrenom =
+            !prenom ||
+            personne.prenom.toLowerCase().includes(prenom);
+
+        return correspondNom && correspondPrenom;
+
+    });
+
+
+    afficherResultats(resultats);
+
+});
+
+
+/*
+    AFFICHER LES RÉSULTATS
+*/
+
+function afficherResultats(resultats) {
+
+    status.style.display = "block";
+
+    if (resultats.length === 0) {
+
+        status.innerHTML = `
+            <strong>Aucun résultat</strong>
+            <br>
+            Aucune personne fictive ne correspond à ta recherche.
+        `;
+
+        return;
+    }
+
+
+    status.innerHTML = `
+        <strong>
+            ${resultats.length} résultat(s) trouvé(s)
+        </strong>
+
+        <div style="
+            margin-top:15px;
+            display:grid;
+            gap:10px;
+        ">
+
+            ${resultats.map(personne => `
+
+                <div style="
+                    padding:15px;
+                    border:1px solid #302c67;
+                    border-radius:10px;
+                    background:rgba(0,0,0,.25);
+                ">
+
+                    <div style="
+                        font-size:15px;
+                        font-weight:bold;
+                        margin-bottom:12px;
+                    ">
+                        ${personne.prenom} ${personne.nom}
+                    </div>
+
+                    <div style="line-height:1.9">
+
+                        <div>
+                            <span style="color:#858794">
+                                Naissance :
+                            </span>
+                            ${personne.naissance}
+                        </div>
+
+                        <div>
+                            <span style="color:#858794">
+                                Ville :
+                            </span>
+                            ${personne.ville}
+                        </div>
+
+                        <div>
+                            <span style="color:#858794">
+                                Email :
+                            </span>
+                            ${personne.email}
+                        </div>
+
+                        <div>
+                            <span style="color:#858794">
+                                Téléphone :
+                            </span>
+                            ${personne.telephone}
+                        </div>
+
+                        <div>
+                            <span style="color:#858794">
+                                Discord :
+                            </span>
+                            ${personne.discord}
+                        </div>
+
+                        <div>
+                            <span style="color:#858794">
+                                Steam :
+                            </span>
+                            ${personne.steam}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `).join("")}
+
+        </div>
+    `;
+}
+
+
+/*
+    MESSAGE
+*/
+
+function afficherMessage(message) {
+
+    status.style.display = "block";
+
+    status.innerHTML = message;
+
+}
+
+
+/*
+    BOUTON EFFACER
+*/
+
+document
+    .getElementById("clear")
+    .addEventListener("click", function() {
+
+        form.reset();
+
+        status.style.display = "none";
+
+        status.innerHTML = "";
+
+    });
+
+</script>
+
 
 /* =========================
    EFFACER
